@@ -47,7 +47,7 @@ const TodoList = () => {
 
   let content;
 
-  if (!isLoading) {
+  if (isLoading) {
     content = (
       <Grid container justifyContent="center">
         <CircularProgress />
