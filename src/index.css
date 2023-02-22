@@ -40,5 +40,3 @@ input[type='text']:focus {
   /* Microsoft Edge */
   color: #9fabbf;
 }
-
-@import './features/todos/TodoList/TodoList.css';

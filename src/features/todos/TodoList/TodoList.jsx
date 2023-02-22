@@ -6,6 +6,8 @@ import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 import TodoListItem from '../TodoListItem';
 import {
   useGetTodosQuery,
@@ -90,17 +92,19 @@ const TodoList = () => {
   }
 
   return (
-    <div className="todo-list">
-      <div className="todo-list-hd">
-        <div className="todo-list-hd-content">
+    <>
+      <Box sx={{ backgroundColor: '#14181f', color: '#fff', p: '30px' }}>
+        <Box sx={{ maxWidth: 768, m: '0 auto' }}>
           <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
             Todo List
           </Typography>
           {newTodoForm}
-        </div>
-      </div>
-      <div className="todo-list-bd">{content}</div>
-    </div>
+        </Box>
+      </Box>
+      <Paper elevation={0} sx={{ maxWidth: 768, m: '30px auto' }}>
+        {content}
+      </Paper>
+    </>
   );
 };
 

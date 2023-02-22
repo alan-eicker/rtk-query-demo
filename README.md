@@ -21,7 +21,13 @@ Note: The API layer utilizes the simple `json-server` to serve up the data as we
 npm i -g json-server
 ```
 
-### 3. Run the app.
+### 3. Start the `json-server`.
+
+```
+json-server --watch ./data/db.json --port 4000
+```
+
+### 4. Run the app.
 
 ```
 npm run start
