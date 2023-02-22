@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
@@ -6,7 +7,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import TodoListItem from '../TodoListItem';
-import { useGetTodosQuery } from '../../api/apiSlice';
+import {
+  useGetTodosQuery,
+  useAddTodoMutation,
+  useUpdateTodoMutation,
+  useDeleteTodoMutation,
+} from '../../../api/apiSlice';
 
 const TodoList = () => {
   const [newTodo, setNewTodo] = useState('');
@@ -19,8 +25,13 @@ const TodoList = () => {
     error,
   } = useGetTodosQuery();
 
+  const [addTodo] = useAddTodoMutation();
+  const [updateTodo] = useUpdateTodoMutation();
+  const [deleteTodo] = useDeleteTodoMutation();
+
   const handleSubmit = (e) => {
-    // submit...
+    e.preventDefault();
+    addTodo({ id: uuid(), title: newTodo, completed: false });
     setNewTodo('');
   };
 
@@ -55,13 +66,24 @@ const TodoList = () => {
     );
   } else if (isSuccess) {
     content = (
-      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {todos.map((todo) => (
-          <React.Fragment key={todo.id}>
-            <TodoListItem {...todo} />
-          </React.Fragment>
-        ))}
-      </List>
+      <>
+        {todos.length === 0 ? (
+          'You have no todos.'
+        ) : (
+          <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+            {Array.from(todos).map((todo, index) => (
+              <React.Fragment key={todo.id}>
+                <TodoListItem
+                  isLast={index === todos.length - 1}
+                  onUpdate={(todo) => updateTodo(todo)}
+                  onDelete={(id) => deleteTodo({ id })}
+                  {...todo}
+                />
+              </React.Fragment>
+            ))}
+          </List>
+        )}
+      </>
     );
   } else if (isError) {
     content = <Alert severity="error">{error}</Alert>;
