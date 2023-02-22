@@ -7,5 +7,38 @@ body {
   font-size: 16px;
   font-weight: 400;
   margin: 0;
-  padding: 20px;
+  padding: 0;
 }
+
+input[type='text'] {
+  background: #242b36;
+  border: 1px solid #9fabbf;
+  color: #fff;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type='text']:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #9fabbf;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #9fabbf;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #9fabbf;
+}
+
+@import './features/todos/TodoList/TodoList.css';
