@@ -7,8 +7,6 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 
 const TodoListItem = ({
   id,
@@ -19,22 +17,18 @@ const TodoListItem = ({
   onDelete = () => {},
 }) => (
   <>
-    <ListItem alignItems="flex-start">
-      <ListItemAvatar>
-        {completed ? (
-          <CheckCircleIcon color="success" />
-        ) : (
-          <WarningRoundedIcon color="warning" />
-        )}
+    <ListItem alignItems="center">
+      <ListItemAvatar sx={{ mt: 0 }}>
+        <Checkbox
+          sx={{ p: 0 }}
+          checked={completed}
+          onChange={() => onUpdate({ id, title, completed: !completed })}
+        />
       </ListItemAvatar>
-      <ListItemText>
-        <Grid container justifyContent="space-between">
+      <ListItemText sx={{ mt: 0 }}>
+        <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>{title}</Grid>
           <Grid item>
-            <Checkbox
-              checked={completed}
-              onChange={() => onUpdate({ id, title, completed: !completed })}
-            />
             <Button onClick={() => onDelete(id)}>Delete</Button>
           </Grid>
         </Grid>

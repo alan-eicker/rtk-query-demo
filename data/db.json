@@ -1,24 +1,34 @@
 {
   "todos": [
     {
-      "id": "724c65ca-2296-41d1-a832-6c6b8ad703f2",
+      "id": 1,
       "title": "Wash car",
-      "completed": true
+      "completed": false
     },
     {
-      "id": "6f4153b2-b478-4f2d-8f8b-887189161e2f",
+      "id": 2,
       "title": "Grocery shopping",
-      "completed": true
+      "completed": false
     },
     {
-      "id": "26e81c20-ce07-440c-89a5-ef9b061ef88b",
+      "id": 3,
       "title": "Go to the gym",
       "completed": false
     },
     {
-      "id": "07e56504-5396-4607-894e-f180de70c4c2",
+      "id": 4,
       "title": "Cut the grass",
       "completed": false
+    },
+    {
+      "id": "6ccb8631-01a4-42d6-8ea8-a0ce6f29e1d7",
+      "title": "Dentist",
+      "completed": true
+    },
+    {
+      "id": "d27a5d68-607a-4b66-bec0-329beb1bcd21",
+      "title": "Take out garbage",
+      "completed": true
     }
   ]
 }
