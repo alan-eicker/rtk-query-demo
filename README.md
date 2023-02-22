@@ -3,7 +3,7 @@
 A simple todo app built with:
 
 - React
-- Redux Toolkit
+- Redux Toolkit Query
 
 ## Setup
 
