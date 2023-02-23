@@ -8,15 +8,16 @@ import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import TodoListItem from '../TodoListItem';
+import TodoListItem from './TodoListItem';
+import withTodosService from '../hocs/withTodosService';
 import {
   useGetTodosQuery,
   useAddTodoMutation,
   useUpdateTodoMutation,
   useDeleteTodoMutation,
-} from '../../../api/apiSlice';
+} from '../services/todosApi';
 
-const TodoList = () => {
+const TodoList = withTodosService(() => {
   const [newTodo, setNewTodo] = useState('');
 
   const {
@@ -40,7 +41,7 @@ const TodoList = () => {
   const newTodoForm = (
     <>
       <form onSubmit={handleSubmit}>
-        <div>
+        <Grid sx={{ display: 'flex' }}>
           <input
             type="text"
             autoComplete="off"
@@ -50,10 +51,10 @@ const TodoList = () => {
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
           />
-        </div>
-        <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-          Submit
-        </Button>
+          <Button sx={{ ml: 1 }} type="submit" variant="contained">
+            Submit
+          </Button>
+        </Grid>
       </form>
     </>
   );
@@ -106,6 +107,6 @@ const TodoList = () => {
       </Paper>
     </>
   );
-};
+});
 
 export default TodoList;
