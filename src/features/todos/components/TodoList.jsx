@@ -17,7 +17,7 @@ import {
   useDeleteTodoMutation,
 } from '../services/todosApi';
 
-const TodoList = withTodosService(() => {
+const TodoList = () => {
   const [newTodo, setNewTodo] = useState('');
 
   const {
@@ -107,6 +107,6 @@ const TodoList = withTodosService(() => {
       </Paper>
     </>
   );
-});
+};
 
-export default TodoList;
+export default withTodosService(TodoList);
